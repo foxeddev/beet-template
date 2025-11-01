@@ -1,4 +1,3 @@
 from beet import Context
 
-
-def main(ctx: Context): ...  # Your functions
+def main(ctx: Context): ...
