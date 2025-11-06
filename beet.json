@@ -4,17 +4,25 @@
   "description": "A pre-configured template to quickly set up your Minecraft Beet project.",
   "author": "FoxedDev",
   "output": "build",
-  "require": ["bolt", "beet.contrib.inline_function_tag"],
+  "require": [
+    "bolt",
+    "beet.contrib.inline_function_tag"
+  ],
   "data_pack": {
-    "load": ["src"]
+    "load": [
+      "src"
+    ]
   },
   "resource_pack": {
-    "load": ["src"]
+    "load": [
+      "src"
+    ]
   },
   "pipeline": [
     "build.main",
     "plugins.pack_install",
     "plugins.advancement_icon",
-    "mecha"
+    "mecha",
+    "plugins.output_zip"
   ]
 }
