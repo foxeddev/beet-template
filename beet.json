@@ -5,8 +5,7 @@
   "author": "FoxedDev",
   "output": "build",
   "require": [
-    "bolt",
-    "beet.contrib.inline_function_tag"
+    "bolt"
   ],
   "data_pack": {
     "load": [
@@ -23,6 +22,7 @@
     "plugins.pack_install",
     "plugins.advancement_icon",
     "mecha",
-    "plugins.output_zip"
+    "plugins.output_zip",
+    "plugins.fix_unicode"
   ]
 }
