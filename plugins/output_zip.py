@@ -1,4 +1,4 @@
-"""Plugin that outputs the data pack and the resource pack in a local directory as a folder and zip archive."""
+"""Plugin that outputs the data pack and the resource pack in a local directory as a zip archive."""
 
 __all__ = [
     "OutputOptions",
@@ -10,6 +10,7 @@ from typing import Optional
 from pathlib import Path
 
 from beet import Context, PluginOptions, configurable
+import shutil
 
 
 class OutputOptions(PluginOptions):
@@ -22,24 +23,17 @@ def beet_default(ctx: Context):
 
 @configurable(validator=OutputOptions)
 def output(ctx: Context, opts: OutputOptions):
-    """Plugin that outputs the data pack and the resource pack in a local directory as a folder and zip archive."""
+    """Plugin that outputs the data pack and the resource pack in a local directory as a zip archive."""
 
     path = opts.directory or ctx.output_directory or ctx.directory
+    data_path = path / f"{ctx.project_id}_{ctx.project_version}_data_pack"
+    assets_path = path / f"{ctx.project_id}_{ctx.project_version}_resource_pack"
 
-    ctx.data.save(
-        path=path / f"{ctx.project_id}_{ctx.project_version}_data_pack.zip",
-        overwrite=True,
-    )
-    ctx.assets.save(
-        path=path / f"{ctx.project_id}_{ctx.project_version}_resource_pack.zip",
-        overwrite=True,
-    )
-
-    ctx.data.save(
-        path=path / f"{ctx.project_id}_{ctx.project_version}_data_pack",
-        overwrite=True,
-    )
-    ctx.assets.save(
-        path=path / f"{ctx.project_id}_{ctx.project_version}_resource_pack",
-        overwrite=True,
-    )
+    for src in (data_path, assets_path):
+        if src.exists() and src.is_dir():
+            shutil.make_archive(
+                str(src),
+                "zip",
+                root_dir=str(src),
+                base_dir=".",
+            )
