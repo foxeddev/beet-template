@@ -1,6 +1,6 @@
 {
   "name": "Beet Template",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A pre-configured template to quickly set up your Minecraft Beet project.",
   "author": "FoxedDev",
   "output": "build",
