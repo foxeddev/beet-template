@@ -18,12 +18,17 @@
     ]
   },
   "pipeline": [
-    "build.main",
-    "plugins.pack_install",
-    "plugins.advancement_icon",
+    "plugins.tagged_functions",
+    "plugins.data_pack_menu_dialog",
     "mecha",
-    "plugins.fix_unicode",
     "plugins.pack_id",
     "plugins.output_zip"
-  ]
+  ],
+  "meta": {
+    "data_pack_menu_dialog": {
+      "website_url": "https://github.com/foxeddev/beet-template",
+      "issues_url": "https://github.com/foxeddev/beet-template/issues",
+      "config_function": "beet_template:config"
+    }
+  }
 }
